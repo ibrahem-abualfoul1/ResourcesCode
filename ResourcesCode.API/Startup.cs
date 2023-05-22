@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ResourcesCode.Entity;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace ResourcesCode.API
 {
@@ -22,9 +23,9 @@ namespace ResourcesCode.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<DbContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
                options.UseSqlServer(
-                   Configuration.GetConnectionString("ConnectionStrings")));
+                   Configuration.GetConnectionString("DefaultConnectionLocal")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
